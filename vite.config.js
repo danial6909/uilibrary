@@ -1,25 +1,17 @@
-/// <reference types="vitest/config" />
+// vite.config.js
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
-
-const dirname =
-  typeof __dirname !== "undefined"
-    ? __dirname
-    : path.dirname(fileURLToPath(import.meta.url));
+import { resolve } from "path";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), cssInjectedByJsPlugin()],
   build: {
     lib: {
-      entry: path.resolve(dirname, "src/index.jsx"),
-      name: "MyUILibrary",
-      fileName: (format) => `index.${format}.js`,
+      entry: resolve(__dirname, "src/index.jsx"),
+      name: "DanielReactUiKit",
+      fileName: (format) => `daniel-react-ui-kit.${format}.js`,
     },
-    // 👈 اضافه شده: این گزینه تضمین می‌کند که CSS به جای فایل جداگانه، درون JS تزریق شود.
-    cssCodeSplit: false,
     rollupOptions: {
       external: ["react", "react-dom"],
       output: {
@@ -27,39 +19,18 @@ export default defineConfig({
           react: "React",
           "react-dom": "ReactDOM",
         },
-        entryFileNames: "index.[format].js",
-        // 👈 این بخش assetFileNames دیگر برای CSS اصلی لازم نیست
-        // چون CSS مستقیماً درون JS تزریق می‌شود.
-        // فقط برای سایر assets (مانند تصاویر، فونت‌ها) باقی می‌ماند.
-        assetFileNames: "assets/[name]-[hash][extname]",
-        chunkFileNames: "assets/[name]-[hash].js",
-      },
-    },
-  },
-  test: {
-    projects: [
-      {
-        extends: true,
-        plugins: [
-          storybookTest({
-            configDir: path.join(dirname, ".storybook"),
-          }),
-        ],
-        test: {
-          name: "storybook",
-          browser: {
-            enabled: true,
-            headless: true,
-            provider: "playwright",
-            instances: [
-              {
-                browser: "chromium",
-              },
-            ],
-          },
-          setupFiles: [".storybook/vitest.setup.js"],
+        // این بخش `assetFileNames` را برای CSS حذف یا اصلاح کنید
+        // اگر می‌خواهید همه CSS درون JS تزریق شود، می‌توانید این شرط را حذف کنید
+        // یا مطمئن شوید که CSS از اینجا خارج نمی‌شود.
+        // مثلاً برای تصاویر نگه دارید:
+        assetFileNames: (assetInfo) => {
+          if (/\.(gif|jpe?g|png|svg|webp|avif)$/.test(assetInfo.name)) {
+            return "assets/[name]-[hash][extname]";
+          }
+          return "assets/[name]-[hash][extname]";
         },
       },
-    ],
+    },
+    cssCodeSplit: false, // این باید CSS را درون JS تزریق کند
   },
 });
