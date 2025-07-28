@@ -1,0 +1,106 @@
+/* در فایل CSS پروژه‌ی کاربر (مثلاً custom-styles.css) */
+.yellow {
+   background-color: lightyellow; 
+  border-color: orange;        
+  color: rgb(54, 165, 42); 
+                
+}
+
+
+
+    .button2 {
+      width: 150px;
+      height: 45px;
+      color: #fff;
+      background: #111;
+      margin-top: 50px;
+      border-radius: 20px;
+      cursor: pointer;
+      border: none;
+      position: relative;
+      z-index: 0;
+      font-family: 'Brush';
+      font-size: 20pt;
+      transition: transform 0.2s ease-in;
+    }
+
+    .button2:first-child {
+      margin-left: 80px;
+    }
+    .button2:nth-child(4){
+      margin-left: 80px;
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+    .button2:nth-child(5){
+      margin-top: 0;
+    }
+    .button2:last-child {
+      margin-top: 0;
+    }
+
+    .button2::after {
+      content: '';
+      background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      background-size: 400%;
+      z-index: -1;
+      filter: blur(5px);
+      width: calc(100% + 5px);
+      height: calc(100% + 5px);
+      animation: glowing 20s linear infinite;
+      opacity: 0;
+      transition: opacity .3s ease-in-out;
+      border-radius: 20px;
+    }
+
+    .button2:hover {
+      transform: scale(1.1) translatey(-20px);
+      box-shadow: 0 5px 45px 5px #06b181;
+    }
+
+    .link:active {
+      color: #000
+    }
+
+    .button2:active::before {
+      background: transparent;
+    }
+
+    .button2:hover:after {
+      opacity: 1;
+    }
+
+    .button2::before {
+      z-index: -1;
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #111;
+      left: 0;
+      top: 0;
+      border-radius: 20px;
+    }
+
+    @keyframes glowing {
+      0% {
+        background-position: 0 0;
+      }
+
+      50% {
+        background-position: 400% 0;
+      }
+
+      100% {
+        background-position: 0 0;
+      }
+    }
+
+
+     .link {
+      text-decoration: none;
+      color: #8709a6;
+    }

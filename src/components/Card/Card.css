@@ -1,0 +1,47 @@
+/* src/components/Card/Card.css */
+.card {
+  border: 1px solid #e0e0e0; /* رنگ مرز کارت */
+  border-radius: 8px; /* گردی گوشه‌ها */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* سایه ملایم */
+  background-color: white;
+  width: 100%; /* عرض پیش‌فرض */
+  max-width: 300px; /* حداکثر عرض برای نمایش خوب در Storybook */
+  font-family: sans-serif;
+  overflow: hidden; /* مطمئن می‌شه محتوا از گوشه‌های گرد بیرون نزنه */
+}
+
+.card-header {
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  font-weight: bold;
+  background-color: #f8f9fa; /* رنگ پس‌زمینه هدر */
+  color: #343a40; /* رنگ متن هدر */
+}
+
+.card-body {
+  padding: 15px;
+  color: #495057; /* رنگ متن بدنه */
+  line-height: 1.6;
+}
+
+.card-footer {
+  padding: 15px;
+  border-top: 1px solid #e0e0e0;
+  background-color: #f8f9fa; /* رنگ پس‌زمینه فوتر */
+  color: #6c757d; /* رنگ متن فوتر */
+  font-size: 0.9em;
+  text-align: right; /* متن فوتر به راست */
+}
+
+/* مثال برای کارت با استایل خاص */
+.card.card-primary-bg .card-header {
+  background-color: #007bff;
+  color: white;
+  border-bottom-color: #007bff;
+}
+
+.card.card-primary-bg .card-footer {
+  background-color: #007bff;
+  color: white;
+  border-top-color: #007bff;
+}

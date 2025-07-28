@@ -1,0 +1,61 @@
+/* src/components/Select/Select.css */
+.select-container {
+  position: relative;
+  display: inline-block;
+  font-family: sans-serif;
+  min-width: 180px; /* حداقل عرض برای select */
+}
+
+.custom-select {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ced4da; /* رنگ خاکستری روشن */
+  border-radius: 5px;
+  background-color: white;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #495057; /* رنگ متن */
+  appearance: none; /* حذف استایل پیش‌فرض مرورگر */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.custom-select:focus {
+  border-color: #80bdff; /* آبی روشن‌تر هنگام فوکوس */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* برای فلش کنار select box (اختیاری) */
+.select-container::after {
+  content: '▼'; /* یک آیکون فلش ساده */
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  pointer-events: none; /* اجازه می‌ده فلش قابل کلیک نباشه */
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.custom-select:disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* overlay برای حالت disabled روی select-container */
+.select-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5); /* شفافیت سفید */
+  cursor: not-allowed;
+  z-index: 1; /* روی select قرار بگیره */
+}

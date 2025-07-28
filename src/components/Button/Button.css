@@ -1,0 +1,183 @@
+/* src/components/Button/Button.css */
+.button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  font-family: sans-serif; /* فونت پیش‌فرض برای خوانایی */
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////// */
+
+/* Variant Styles */
+.button-primary {
+  background-color: #007bff; /* آبی اصلی */
+  color: white;
+}
+
+.button-secondary {
+  background-color: #6c757d; /* خاکستری */
+  color: white;
+}
+
+.button-outline {
+  background-color: transparent;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.button-text {
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  padding: 8px 12px; /* پدینگ کمتر برای دکمه‌های متنی */
+}
+
+
+
+    
+    .button-dd {
+      width: 150px;
+      height: 45px;
+      color: #fff;
+      background: #111;
+      margin-top: 50px;
+      border-radius: 20px;
+      cursor: pointer;
+      border: none;
+      position: relative;
+      z-index: 0;
+      font-family: 'Brush';
+      font-size: 20pt;
+      transition: transform 0.2s ease-in;
+    }
+
+    .button-dd:first-child {
+      margin-left: 80px;
+    }
+    .button-dd:nth-child(4){
+      margin-left: 80px;
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+    .button-dd:nth-child(5){
+      margin-top: 0;
+    }
+    .button-dd:last-child {
+      margin-top: 0;
+    }
+
+    .button-dd::after {
+      content: '';
+      background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      background-size: 400%;
+      z-index: -1;
+      filter: blur(5px);
+      width: calc(100% + 5px);
+      height: calc(100% + 5px);
+      animation: glowing 20s linear infinite;
+      opacity: 0;
+      transition: opacity .3s ease-in-out;
+      border-radius: 20px;
+    }
+
+    .button-dd:hover {
+      transform: scale(1.1) translatey(-20px);
+      box-shadow: 0 5px 45px 5px #06b181;
+    }
+
+    .link:active {
+      color: #000
+    }
+
+    .button-dd:active::before {
+      background: transparent;
+    }
+
+    .button-dd:hover:after {
+      opacity: 1;
+    }
+
+    .button-dd::before {
+      z-index: -1;
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #111;
+      left: 0;
+      top: 0;
+      border-radius: 20px;
+    }
+
+    @keyframes glowing {
+      0% {
+        background-position: 0 0;
+      }
+
+      50% {
+        background-position: 400% 0;
+      }
+
+      100% {
+        background-position: 0 0;
+      }
+    }
+
+
+/* ///////////////////////////////////////////////////////////////////////// */
+
+/* Size Styles */
+.button-small {
+  padding: 8px 15px;
+  font-size: 14px;
+}
+
+.button-medium {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.button-large {
+  padding: 12px 25px;
+  font-size: 18px;
+}
+
+/* //////////////////////////////////////////////////////////////////////////// */
+
+/* Hover/Active States */
+.button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.button-primary:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.button-secondary:hover:not(:disabled) {
+  background-color: #545b62;
+}
+
+.button-outline:hover:not(:disabled) {
+  background-color: rgba(0, 123, 255, 0.1); /* کمی رنگ آبی روشن */
+}
+
+.button-text:hover:not(:disabled) {
+  background-color: rgba(0, 123, 255, 0.05);
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////// */
+
+/* Disabled State */
+.button:disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
